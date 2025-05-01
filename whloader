@@ -1,1 +1,3 @@
--- PLACEHOLDER
+if game.PlaceId == 111989938562194 then
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Luki6262/scripts/refs/heads/main/supportedgames/brainrotev"))()
+end
