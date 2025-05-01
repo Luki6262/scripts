@@ -133,37 +133,38 @@ function Library:Create(Class, Properties)
     return _Instance;
 end;
 
--- ↓↓ Library tablosunun hemen sonuna ekleyin ↓↓
-function Library:ChangeBackground(rawId)
-    -- id’yi normalize edin
+function Library:ChangeBackground(rawId, tileScale)
+    -- normalize id
     local assetId = rawId:match("^rbxassetid://") and rawId or ("rbxassetid://" .. tostring(rawId))
 
-    -- önce varsa eskiyi kaldır
+    -- önce eski background’ı yık
     if self._Background then
         self._Background:Destroy()
-        self._Background = nil
     end
 
-    -- yeni ImageLabel oluştur
+    -- ana frame referansı
+    local frame = assert(self.MainFrame, "Library.MainFrame bulunamadı!")
+    -- dışarı taşmayı kes
+    frame.ClipsDescendants = true
+
+    -- yeni ImageLabel
     local bg = Instance.new("ImageLabel")
-    bg.Name               = "LibraryBackground"
-    bg.BackgroundColor3   = Color3.new(1,1,1)      -- iki kere beyaz, çünkü ImageColor3 ile renk verebilirsiniz
-    bg.BackgroundTransparency = 1                 -- çerçeve transparan
-    bg.Image              = assetId
-    bg.ImageColor3        = Color3.new(1,1,1)      -- isterseniz burada renk de değiştirebilirsiniz
-    bg.ImageTransparency  = 0                      -- 0 = tamamen opak
-    bg.Size               = UDim2.new(1,0,1,0)
-    bg.Position           = UDim2.new(0,0,0,0)
-    bg.ZIndex             = 0                      -- tüm UI elementlerin arkasında kalacak
-    bg.ScaleType          = Enum.ScaleType.Tile    -- resmi her yöne döşe
-    bg.TileSize           = UDim2.new(0.1,0,0.1,0)  -- 0.1 = resmi 10x10 defa döşer; ihtiyaca göre ayarlayın
+    bg.Name                   = "LibraryBackground"
+    bg.BackgroundTransparency = 1
+    bg.ImageTransparency      = 0
+    bg.Image                 = assetId
+    -- fill the frame
+    bg.Size                  = UDim2.new(1, 0, 1, 0)
+    bg.Position              = UDim2.new(0, 0, 0, 0)
+    -- tile
+    bg.ScaleType             = Enum.ScaleType.Tile
+    bg.TileSize              = UDim2.new(tileScale or 0.1, 0, tileScale or 0.1, 0)
+    -- z‐index: ana frameden bir eksiği, diğer elementlerin önünde kalmasın
+    bg.ZIndex                = frame.ZIndex
+    -- parent’ı ana frame
+    bg.Parent                = frame
 
-    -- Parent'ı en dıştaki ScreenGui’niz olsun
-    bg.Parent             = self.ScreenGui
-
-    -- referansı saklayın ki bir daha ekrana eklemeyelim
-    self._Background      = bg
-
+    self._Background = bg
     return self
 end
 
