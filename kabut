@@ -133,6 +133,15 @@ function Library:Create(Class, Properties)
     return _Instance;
 end;
 
+function Library:Init()
+    -- ScreenGui’iniz zaten self.ScreenGui’de
+    -- diyelim ki Frame adınız "WindowFrame"
+    self.MainFrame = self.ScreenGui:WaitForChild("WindowFrame")
+    -- veya nested ise:
+    -- self.MainFrame = self.ScreenGui:WaitForChild("Container"):WaitForChild("WindowFrame")
+end
+
+
 function Library:ChangeBackground(rawId, tileScale)
     -- normalize id
     local assetId = rawId:match("^rbxassetid://") and rawId or ("rbxassetid://" .. tostring(rawId))
