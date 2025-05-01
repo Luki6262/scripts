@@ -560,13 +560,6 @@ function Library:AddBackground()
 end
 
 function Library:ChangeBackground(ImageId)
-    -- If the main window doesn't exist yet, wait until it does
-    if not self.Main then
-        warn("Cannot set background yet - Main window not created")
-        self.PendingBackground = ImageId
-        return
-    end
-    
     -- If the background image doesn't exist yet, create it
     if not self.BackgroundImage then
         self:AddBackground()
@@ -3863,7 +3856,7 @@ function Library:CreateWindow(...)
         self:ChangeBackground(self.PendingBackground)
         self.PendingBackground = nil
     end
-    
+
     Window.Holder = Outer;
 
     return Window;
