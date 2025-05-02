@@ -37,6 +37,16 @@ if game.PlaceId == SupportedGames["Brainrot Evolution"] then
 				backgroundColor = Colors["Green"]
 			},
 			{
+				text = "Added Health Indicators to NPCS",
+				imageId = "rbxassetid://0000000000",
+				backgroundColor = Colors["Green"]
+			},
+			{
+				text = "Added Win Indicators to EGGS",
+				imageId = "rbxassetid://0000000000",
+				backgroundColor = Colors["Green"]
+			},
+			{
 				text = "Fixed Bugs",
 				imageId = "rbxassetid://0000000000",
 				backgroundColor = Colors["Green"]
@@ -61,7 +71,7 @@ if game.PlaceId == SupportedGames["Brainrot Evolution"] then
 				updateLogVisible = false,
 				layoutOrder = 999,
 				--updateLogImageId = "rbxassetid://111164450034240",
-				updateLogDate = "19 July 2027"
+				updateLogDate = "2 May 2025"
 			},
 	
 		},
