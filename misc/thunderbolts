@@ -52,7 +52,7 @@ local Updates = {
 			titleColor = Color3.fromRGB(255, 255, 255), 
 			borderColor = Color3.fromRGB(0, 200, 0), 
 			borderThickness = 3,
-			updateLogVisible = true,
+			updateLogVisible = false,
 			layoutOrder = 999,
 			--updateLogImageId = "rbxassetid://111164450034240",
 			updateLogDate = "19 July 2027"
@@ -68,39 +68,6 @@ local UpdateMetadata = {
 		developerNotes = "This update focuses on adding new content while fixing critical issues.",
 		buttonImageId = "rbxassetid://14423621163" 
 	},
-
-	["Update 3.1.0"] = {
-		releaseDate = "1 June 2023",
-		isHotfix = false,
-		developerNotes = "A major update focusing on player customization and rewards.",
-		buttonImageId = "rbxassetid://14001321443"
-	},
-
-	["Update 3.0.5"] = {
-		releaseDate = "15 February 2023",
-		isHotfix = true,
-		developerNotes = "Emergency fixes for critical issues affecting gameplay.",
-		buttonImageId = "rbxassetid://111164450034240"
-	},
-
-	["Update 3.0.0"] = {
-		releaseDate = "1 January 2023",
-		isHotfix = false,
-		developerNotes = "Our biggest update ever! Complete redesign of all systems.",
-		videoLink = "https://youtube.com/watch?v=example",
-		buttonImageId = "rbxassetid://14423621349",
-		specialEffects = {
-			particleEffect = true,
-			animationStyle = "bounce"
-		}
-	},
-
-	["Update 2.5.0"] = {
-		releaseDate = "1 December 2022",
-		isHotfix = false,
-		developerNotes = "Introducing pets and seasonal content!",
-		buttonImageId = "rbxassetid://111164450034240"
-	}
 }
 
 for updateName, metadata in pairs(UpdateMetadata) do
