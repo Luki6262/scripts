@@ -1,4 +1,9 @@
-if game.PlaceId == 111989938562194 then
+local SupportedGames = {
+	["Brainrot Evolution"] = 111989938562194,
+	["Rhythm Heaven"] = 111989941281739,
+}
+
+if game.PlaceId == SupportedGames["Brainrot Evolution"] then
 	local Colors = {
 		["Red"] = "Color3.fromRGB(255, 0, 0)",
 		["Green"] = "Color3.fromRGB(0, 255, 0)",
