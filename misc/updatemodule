@@ -27,12 +27,12 @@ local Updates = {
 
 		{
 			text = "Added Auto Buy Upgrades",
-		--	imageId = "rbxassetid://14423621163",
+			imageId = "rbxassetid://12345678",
 			backgroundColor = Colors["Green"]
 		},
 		{
 			text = "Fixed Bugs",
-			--imageId = "rbxassetid://14001321443",
+			imageId = "rbxassetid://12345678",
 			backgroundColor = Colors["Green"]
 		},
 	--[[	{
