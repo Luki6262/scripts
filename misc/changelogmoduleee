@@ -322,7 +322,7 @@ Converted["_UpdateButtonTemplate"].ZIndex = 99
 
 Converted["_UIStroke6"].Parent = Converted["_ScreenGui"]
 
-local UpdateModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/yourusername/yourrepo/main/updatemodule.lua"))()
+local UpdateModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Luki6262/scripts/refs/heads/main/misc/updatemodule"))()
 local Library = {}
 
 local function Library:Init()
