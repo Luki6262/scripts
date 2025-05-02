@@ -1,0 +1,896 @@
+for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+    if v.Name == "Zort" then
+        v:Destroy()
+    end
+end
+
+local CurrentVersion = "Update 3.0.0"
+local Converted = {
+	["_ScreenGui"] = Instance.new("ScreenGui");
+	["_Frame"] = Instance.new("Frame");
+	["_UIStroke"] = Instance.new("UIStroke");
+	["_UICorner"] = Instance.new("UICorner");
+	["_ChangelogLabel"] = Instance.new("TextLabel");
+	["_UIStroke1"] = Instance.new("UIStroke");
+	["_ImageLabel"] = Instance.new("ImageLabel");
+	["_ScrollingFrame"] = Instance.new("ScrollingFrame");
+	["_ChangelogTemplate"] = Instance.new("Frame");
+	["_UIStroke2"] = Instance.new("UIStroke");
+	["_UICorner1"] = Instance.new("UICorner");
+	["_UIListLayout"] = Instance.new("UIListLayout");
+	["_ChangeLog Imagelabel"] = Instance.new("ImageLabel");
+	["_UIPadding"] = Instance.new("UIPadding");
+	["_ChangelogLabel1"] = Instance.new("TextLabel");
+	["_UIStroke3"] = Instance.new("UIStroke");
+	["_UIListLayout1"] = Instance.new("UIListLayout");
+	["_UIPadding1"] = Instance.new("UIPadding");
+	["_UpdateLogImageFrame"] = Instance.new("Frame");
+	["_UpdateLogImage"] = Instance.new("ImageLabel");
+	["_UIGradient"] = Instance.new("UIGradient");
+	["_DateLabel"] = Instance.new("TextLabel");
+	["_UIStroke4"] = Instance.new("UIStroke");
+	["_Close"] = Instance.new("ImageButton");
+	["_red gradient"] = Instance.new("UIGradient");
+	["_shadow"] = Instance.new("ImageLabel");
+	["_TextLabel"] = Instance.new("TextLabel");
+	["_UIStroke5"] = Instance.new("UIStroke");
+	["_RightButtons"] = Instance.new("Frame");
+	["_RightButtonsScrollingFrame"] = Instance.new("ScrollingFrame");
+	["_UIListLayout2"] = Instance.new("UIListLayout");
+	["_UIPadding2"] = Instance.new("UIPadding");
+	["_UpdateButtonTemplate"] = Instance.new("ImageButton");
+	["_UIStroke6"] = Instance.new("UIStroke");
+}
+
+Converted["_ScreenGui"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Converted["_ScreenGui"].Name = "Zort"
+
+if game:GetService("RunService"):IsStudio() then
+	Converted["_ScreenGui"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+else
+	Converted["_ScreenGui"].Parent = game:GetService("CoreGui")
+end
+
+
+
+
+
+Converted["_Frame"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Frame"].BorderSizePixel = 0
+Converted["_Frame"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Frame"].Size = UDim2.new(0, 407, 0, 473)
+Converted["_Frame"].Parent = Converted["_ScreenGui"]
+
+Converted["_UIStroke"].Thickness = 3
+Converted["_UIStroke"].Parent = Converted["_Frame"]
+
+Converted["_UICorner"].Parent = Converted["_Frame"]
+
+Converted["_ChangelogLabel"].Font = Enum.Font.FredokaOne
+Converted["_ChangelogLabel"].Text = "Changelog"
+Converted["_ChangelogLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ChangelogLabel"].TextScaled = true
+Converted["_ChangelogLabel"].TextSize = 14
+Converted["_ChangelogLabel"].TextWrapped = true
+Converted["_ChangelogLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ChangelogLabel"].BackgroundTransparency = 121
+Converted["_ChangelogLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ChangelogLabel"].BorderSizePixel = 0
+Converted["_ChangelogLabel"].Position = UDim2.new(0.0909090936, 0, -0.033826638, 0)
+Converted["_ChangelogLabel"].Size = UDim2.new(0, 152, 0, 32)
+Converted["_ChangelogLabel"].Name = "ChangelogLabel"
+Converted["_ChangelogLabel"].Parent = Converted["_Frame"]
+
+Converted["_UIStroke1"].Thickness = 3
+Converted["_UIStroke1"].Parent = Converted["_ChangelogLabel"]
+
+Converted["_ImageLabel"].Image = "rbxassetid://111164450034240"
+Converted["_ImageLabel"].ScaleType = Enum.ScaleType.Fit
+Converted["_ImageLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ImageLabel"].BackgroundTransparency = 1
+Converted["_ImageLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ImageLabel"].BorderSizePixel = 0
+Converted["_ImageLabel"].Position = UDim2.new(-0.0294840299, 0, -0.061310783, 0)
+Converted["_ImageLabel"].Rotation = -10
+Converted["_ImageLabel"].Size = UDim2.new(0, 56, 0, 58)
+Converted["_ImageLabel"].Parent = Converted["_Frame"]
+
+Converted["_ScrollingFrame"].AutomaticCanvasSize = Enum.AutomaticSize.Y
+Converted["_ScrollingFrame"].CanvasSize = UDim2.new(0, 0, 0, 0)
+Converted["_ScrollingFrame"].ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ScrollingFrame"].ScrollBarThickness = 6
+Converted["_ScrollingFrame"].Active = true
+Converted["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ScrollingFrame"].BackgroundTransparency = 1
+Converted["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ScrollingFrame"].BorderSizePixel = 0
+Converted["_ScrollingFrame"].Position = UDim2.new(0, 6, 0, 14)
+Converted["_ScrollingFrame"].Size = UDim2.new(0, 401, 0, 448)
+Converted["_ScrollingFrame"].ZIndex = -2
+Converted["_ScrollingFrame"].Parent = Converted["_Frame"]
+
+Converted["_ChangelogTemplate"].BackgroundColor3 = Color3.fromRGB(85.0000025331974, 255, 0)
+Converted["_ChangelogTemplate"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ChangelogTemplate"].BorderSizePixel = 0
+Converted["_ChangelogTemplate"].Size = UDim2.new(0, 382, 0, 100)
+Converted["_ChangelogTemplate"].Visible = false
+Converted["_ChangelogTemplate"].Name = "ChangelogTemplate"
+Converted["_ChangelogTemplate"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_UIStroke2"].Thickness = 2.5
+Converted["_UIStroke2"].Parent = Converted["_ChangelogTemplate"]
+
+Converted["_UICorner1"].Parent = Converted["_ChangelogTemplate"]
+
+Converted["_UIListLayout"].Padding = UDim.new(0, 10)
+Converted["_UIListLayout"].FillDirection = Enum.FillDirection.Horizontal
+Converted["_UIListLayout"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout"].Parent = Converted["_ChangelogTemplate"]
+
+Converted["_ChangeLog Imagelabel"].Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+Converted["_ChangeLog Imagelabel"].ScaleType = Enum.ScaleType.Fit
+Converted["_ChangeLog Imagelabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ChangeLog Imagelabel"].BackgroundTransparency = 1
+Converted["_ChangeLog Imagelabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ChangeLog Imagelabel"].BorderSizePixel = 0
+Converted["_ChangeLog Imagelabel"].Position = UDim2.new(0, 0, 0.200000003, 0)
+Converted["_ChangeLog Imagelabel"].Size = UDim2.new(0, 83, 0, 80)
+Converted["_ChangeLog Imagelabel"].Name = "ChangeLog Imagelabel"
+Converted["_ChangeLog Imagelabel"].Parent = Converted["_ChangelogTemplate"]
+
+Converted["_UIPadding"].PaddingLeft = UDim.new(0, 15)
+Converted["_UIPadding"].PaddingTop = UDim.new(0, 10)
+Converted["_UIPadding"].Parent = Converted["_ChangelogTemplate"]
+
+Converted["_ChangelogLabel1"].Font = Enum.Font.FredokaOne
+Converted["_ChangelogLabel1"].Text = "sup"
+Converted["_ChangelogLabel1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ChangelogLabel1"].TextScaled = true
+Converted["_ChangelogLabel1"].TextSize = 14
+Converted["_ChangelogLabel1"].TextWrapped = true
+Converted["_ChangelogLabel1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ChangelogLabel1"].BackgroundTransparency = 121
+Converted["_ChangelogLabel1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ChangelogLabel1"].BorderSizePixel = 0
+Converted["_ChangelogLabel1"].Position = UDim2.new(0.288828343, 0, 0, 0)
+Converted["_ChangelogLabel1"].Size = UDim2.new(0, 226, 0, 36)
+Converted["_ChangelogLabel1"].Name = "ChangelogLabel"
+Converted["_ChangelogLabel1"].Parent = Converted["_ChangelogTemplate"]
+
+Converted["_UIStroke3"].Thickness = 3
+Converted["_UIStroke3"].Parent = Converted["_ChangelogLabel1"]
+
+Converted["_UIGradient"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+	ColorSequenceKeypoint.new(0.5187712907791138, Color3.fromRGB(255, 255, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
+}
+Converted["_UIGradient"].Parent = Converted["_ChangelogTemplate"]
+
+Converted["_UIListLayout1"].Padding = UDim.new(0, 20)
+Converted["_UIListLayout1"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout1"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_UIPadding1"].PaddingLeft = UDim.new(0, 7)
+Converted["_UIPadding1"].PaddingTop = UDim.new(0, 25)
+Converted["_UIPadding1"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_UpdateLogImageFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_UpdateLogImageFrame"].BackgroundTransparency = 1
+Converted["_UpdateLogImageFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_UpdateLogImageFrame"].BorderSizePixel = 0
+Converted["_UpdateLogImageFrame"].Size = UDim2.new(0, 385, 0, 158)
+Converted["_UpdateLogImageFrame"].Visible = false
+Converted["_UpdateLogImageFrame"].Name = "UpdateLogImageFrame"
+Converted["_UpdateLogImageFrame"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_UpdateLogImage"].Image = "rbxassetid://111164450034240"
+Converted["_UpdateLogImage"].ScaleType = Enum.ScaleType.Fit
+Converted["_UpdateLogImage"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_UpdateLogImage"].BackgroundTransparency = 1
+Converted["_UpdateLogImage"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_UpdateLogImage"].BorderSizePixel = 0
+Converted["_UpdateLogImage"].Position = UDim2.new(0.314496309, 0, 0.061310783, 0)
+Converted["_UpdateLogImage"].Size = UDim2.new(0, 147, 0, 140)
+Converted["_UpdateLogImage"].Name = "UpdateLogImage"
+Converted["_UpdateLogImage"].Parent = Converted["_UpdateLogImageFrame"]
+
+Converted["_DateLabel"].Font = Enum.Font.FredokaOne
+Converted["_DateLabel"].Text = "Changelog"
+Converted["_DateLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_DateLabel"].TextScaled = true
+Converted["_DateLabel"].TextSize = 14
+Converted["_DateLabel"].TextWrapped = true
+Converted["_DateLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_DateLabel"].BackgroundTransparency = 121
+Converted["_DateLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_DateLabel"].BorderSizePixel = 0
+Converted["_DateLabel"].Position = UDim2.new(0.69287467, 0, 0.961945057, 0)
+Converted["_DateLabel"].Size = UDim2.new(0, 152, 0, 32)
+Converted["_DateLabel"].Name = "DateLabel"
+Converted["_DateLabel"].Parent = Converted["_Frame"]
+
+Converted["_UIStroke4"].Thickness = 3
+Converted["_UIStroke4"].Parent = Converted["_DateLabel"]
+
+Converted["_Close"].Image = "rbxassetid://14423621163"
+Converted["_Close"].PressedImage = "rbxassetid://14423621349"
+Converted["_Close"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Close"].BackgroundTransparency = 2
+Converted["_Close"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Close"].BorderSizePixel = 0
+Converted["_Close"].Position = UDim2.new(0, 358, 0, -29)
+Converted["_Close"].Size = UDim2.new(0, 61, 0, 58)
+Converted["_Close"].Name = "Close"
+Converted["_Close"].Parent = Converted["_Frame"]
+
+Converted["_red gradient"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 2.000000118277967, 61.00000016391277)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 39.00000147521496, 125.00000014901161))
+}
+Converted["_red gradient"].Rotation = -90
+Converted["_red gradient"].Name = "red gradient"
+Converted["_red gradient"].Parent = Converted["_Close"]
+
+Converted["_shadow"].Image = "rbxassetid://14001321443"
+Converted["_shadow"].ImageColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_shadow"].ImageTransparency = 0.75
+Converted["_shadow"].ScaleType = Enum.ScaleType.Slice
+Converted["_shadow"].SliceCenter = Rect.new(50, 50, 150, 150)
+Converted["_shadow"].SliceScale = 0.75
+Converted["_shadow"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_shadow"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_shadow"].BackgroundTransparency = 1
+Converted["_shadow"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_shadow"].BorderSizePixel = 0
+Converted["_shadow"].Position = UDim2.new(0, 33, 0, 38)
+Converted["_shadow"].Size = UDim2.new(0, 66, 0, 70)
+Converted["_shadow"].Visible = false
+Converted["_shadow"].ZIndex = 49
+Converted["_shadow"].Name = "shadow"
+Converted["_shadow"].Parent = Converted["_Close"]
+
+Converted["_TextLabel"].Font = Enum.Font.FredokaOne
+Converted["_TextLabel"].Text = "X"
+Converted["_TextLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel"].TextScaled = true
+Converted["_TextLabel"].TextSize = 18
+Converted["_TextLabel"].TextWrapped = true
+Converted["_TextLabel"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel"].BackgroundTransparency = 1
+Converted["_TextLabel"].BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036)
+Converted["_TextLabel"].BorderSizePixel = 0
+Converted["_TextLabel"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_TextLabel"].Size = UDim2.new(0, 58, 0, 37)
+Converted["_TextLabel"].ZIndex = 50
+Converted["_TextLabel"].AutoLocalize = false
+Converted["_TextLabel"].Parent = Converted["_Close"]
+
+Converted["_UIStroke5"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke5"].Thickness = 3
+Converted["_UIStroke5"].Parent = Converted["_TextLabel"]
+
+Converted["_RightButtons"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_RightButtons"].BackgroundTransparency = 1
+Converted["_RightButtons"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_RightButtons"].BorderSizePixel = 0
+Converted["_RightButtons"].Position = UDim2.new(0, -74, 0, 66)
+Converted["_RightButtons"].Size = UDim2.new(0, 103, 0, 341)
+Converted["_RightButtons"].Name = "RightButtons"
+Converted["_RightButtons"].Parent = Converted["_Frame"]
+
+Converted["_RightButtonsScrollingFrame"].AutomaticCanvasSize = Enum.AutomaticSize.Y
+Converted["_RightButtonsScrollingFrame"].BottomImage = ""
+Converted["_RightButtonsScrollingFrame"].CanvasSize = UDim2.new(0, 0, 0, 0)
+Converted["_RightButtonsScrollingFrame"].MidImage = ""
+Converted["_RightButtonsScrollingFrame"].ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_RightButtonsScrollingFrame"].ScrollBarThickness = 10
+Converted["_RightButtonsScrollingFrame"].ScrollingDirection = Enum.ScrollingDirection.Y
+Converted["_RightButtonsScrollingFrame"].TopImage = ""
+Converted["_RightButtonsScrollingFrame"].Active = true
+Converted["_RightButtonsScrollingFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_RightButtonsScrollingFrame"].BackgroundTransparency = 1
+Converted["_RightButtonsScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_RightButtonsScrollingFrame"].BorderSizePixel = 0
+Converted["_RightButtonsScrollingFrame"].Position = UDim2.new(0, -4, 0, 7)
+Converted["_RightButtonsScrollingFrame"].Size = UDim2.new(0, 100, 0, 324)
+Converted["_RightButtonsScrollingFrame"].Name = "RightButtonsScrollingFrame"
+Converted["_RightButtonsScrollingFrame"].Parent = Converted["_RightButtons"]
+
+Converted["_UIListLayout2"].Padding = UDim.new(0, 35)
+Converted["_UIListLayout2"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout2"].Parent = Converted["_RightButtonsScrollingFrame"]
+
+Converted["_UIPadding2"].PaddingLeft = UDim.new(0, 15)
+Converted["_UIPadding2"].PaddingTop = UDim.new(0, 8)
+Converted["_UIPadding2"].Parent = Converted["_RightButtonsScrollingFrame"]
+
+Converted["_UpdateButtonTemplate"].Image = "rbxassetid://111164450034240"
+Converted["_UpdateButtonTemplate"].ScaleType = Enum.ScaleType.Fit
+Converted["_UpdateButtonTemplate"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_UpdateButtonTemplate"].BackgroundTransparency = 1
+Converted["_UpdateButtonTemplate"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_UpdateButtonTemplate"].BorderSizePixel = 0
+Converted["_UpdateButtonTemplate"].Position = UDim2.new(0.188235298, 0, 0, 0)
+Converted["_UpdateButtonTemplate"].Size = UDim2.new(0, 75, 0, 78)
+Converted["_UpdateButtonTemplate"].Name = "UpdateButtonTemplate"
+Converted["_UpdateButtonTemplate"].Parent = Converted["_RightButtonsScrollingFrame"]
+Converted["_UpdateButtonTemplate"].ZIndex = 99
+
+Converted["_UIStroke6"].Parent = Converted["_ScreenGui"]
+
+local UpdateModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/yourusername/yourrepo/main/updatemodule.lua"))()
+local Library = {}
+
+local function Library:Init()
+    local function setupCloseButtonAnimations()
+        local closeButton = Converted["_Close"]
+        local originalSize = closeButton.Size
+        local originalPosition = closeButton.Position
+    
+        closeButton.MouseEnter:Connect(function()
+            game:GetService("TweenService"):Create(closeButton, TweenInfo.new(0.2), {
+                Size = UDim2.new(0, originalSize.X.Offset * 1.1, 0, originalSize.Y.Offset * 1.1),
+                Position = UDim2.new(0, originalPosition.X.Offset - 3, 0, originalPosition.Y.Offset - 3)
+            }):Play()
+    
+            closeButton.shadow.Visible = false
+        end)
+    
+        closeButton.MouseLeave:Connect(function()
+            game:GetService("TweenService"):Create(closeButton, TweenInfo.new(0.2), {
+                Size = originalSize,
+                Position = originalPosition
+            }):Play()
+    
+            closeButton.shadow.Visible = false
+        end)
+    
+        closeButton.MouseButton1Down:Connect(function()
+            game:GetService("TweenService"):Create(closeButton, TweenInfo.new(0.1), {
+                Size = UDim2.new(0, originalSize.X.Offset * 0.9, 0, originalSize.Y.Offset * 0.9),
+                Position = UDim2.new(0, originalPosition.X.Offset + 3, 0, originalPosition.Y.Offset + 3)
+            }):Play()
+        end)
+    
+        closeButton.MouseButton1Up:Connect(function()
+            game:GetService("TweenService"):Create(closeButton, TweenInfo.new(0.1), {
+                Size = UDim2.new(0, originalSize.X.Offset * 1.1, 0, originalSize.Y.Offset * 1.1),
+                Position = UDim2.new(0, originalPosition.X.Offset - 3, 0, originalPosition.Y.Offset - 3)
+            }):Play()
+        end)
+    
+        closeButton.MouseButton1Click:Connect(function()
+    
+            Converted["_ScreenGui"].Enabled = false
+        end)
+    end
+    setupCloseButtonAnimations()
+    
+    local function setupUpdateButtonAnimations()
+        local updateButton = Converted["_UpdateButtonTemplate"]
+        local originalSize = updateButton.Size
+        local originalPosition = updateButton.Position
+    
+        if not updateButton:FindFirstChild("shadow") then
+            local shadow = Converted["_shadow"]:Clone()
+            shadow.Parent = updateButton
+            shadow.Visible = false
+        end
+    
+        updateButton.MouseEnter:Connect(function()
+            game:GetService("TweenService"):Create(updateButton, TweenInfo.new(0.2), {
+                Size = UDim2.new(0, originalSize.X.Offset * 1.1, 0, originalSize.Y.Offset * 1.1),
+                Position = UDim2.new(0, originalPosition.X.Offset - 3, 0, originalPosition.Y.Offset - 3)
+            }):Play()
+    
+            if updateButton:FindFirstChild("shadow") then
+                updateButton.shadow.Visible = false
+            end
+        end)
+    
+        updateButton.MouseLeave:Connect(function()
+            game:GetService("TweenService"):Create(updateButton, TweenInfo.new(0.2), {
+                Size = originalSize,
+                Position = originalPosition
+            }):Play()
+    
+            if updateButton:FindFirstChild("shadow") then
+                updateButton.shadow.Visible = false
+            end
+        end)
+    
+        updateButton.MouseButton1Down:Connect(function()
+            game:GetService("TweenService"):Create(updateButton, TweenInfo.new(0.1), {
+                Size = UDim2.new(0, originalSize.X.Offset * 0.9, 0, originalSize.Y.Offset * 0.9),
+                Position = UDim2.new(0, originalPosition.X.Offset + 3, 0, originalPosition.Y.Offset + 3)
+            }):Play()
+        end)
+    
+        updateButton.MouseButton1Up:Connect(function()
+            game:GetService("TweenService"):Create(updateButton, TweenInfo.new(0.1), {
+                Size = UDim2.new(0, originalSize.X.Offset * 1.1, 0, originalSize.Y.Offset * 1.1),
+                Position = UDim2.new(0, originalPosition.X.Offset - 3, 0, originalPosition.Y.Offset - 3)
+            }):Play()
+        end)
+    end
+    setupUpdateButtonAnimations()
+    
+    local function calculateDaysSince(dateString)
+    
+        local day, month, year = dateString:match("(%d+)%s+(%a+)%s+(%d+)")
+    
+        if not day or not month or not year then
+            return nil
+        end
+    
+        local monthNames = {
+            ["January"] = 1, ["Jan"] = 1,
+            ["February"] = 2, ["Feb"] = 2,
+            ["March"] = 3, ["Mar"] = 3,
+            ["April"] = 4, ["Apr"] = 4,
+            ["May"] = 5,
+            ["June"] = 6, ["Jun"] = 6,
+            ["July"] = 7, ["Jul"] = 7,
+            ["August"] = 8, ["Aug"] = 8,
+            ["September"] = 9, ["Sep"] = 9,
+            ["October"] = 10, ["Oct"] = 10,
+            ["November"] = 11, ["Nov"] = 11,
+            ["December"] = 12, ["Dec"] = 12
+        }
+    
+        local monthNum = monthNames[month]
+        if not monthNum then
+            return nil
+        end
+    
+        local updateTime = os.time({
+            year = tonumber(year),
+            month = monthNum,
+            day = tonumber(day),
+            hour = 0,
+            min = 0,
+            sec = 0
+        })
+    
+        local currentTime = os.time()
+    
+        local diffSeconds = currentTime - updateTime
+        local diffDays = math.floor(diffSeconds / (60 * 60 * 24))
+    
+        return diffDays
+    end
+    
+    function CreateChangelogFrame(params)
+        local newChangelogFrame = Converted["_ChangelogTemplate"]:Clone()
+        newChangelogFrame.Name = "Changelog_" .. os.time() 
+    
+        local imageLabel = newChangelogFrame:FindFirstChild("ChangeLog Imagelabel")
+        if imageLabel then
+            if params.ImageLabelId then
+                imageLabel.Image = params.ImageLabelId
+            end
+    
+            if params.ImageLabelVisible == false or not params.ImageLabelId then
+                imageLabel.Visible = false
+            else
+                imageLabel.Visible = true
+            end
+        end
+    
+        local textLabel = newChangelogFrame:FindFirstChild("ChangelogLabel")
+        if textLabel and params.Text then
+            textLabel.Text = params.Text
+        end
+    
+        if params.Color then
+            if type(params.Color) == "string" then
+                local r, g, b = params.Color:match("%((%d+),%s*(%d+),%s*(%d+)%)")
+                if r and g and b then
+                    newChangelogFrame.BackgroundColor3 = Color3.fromRGB(tonumber(r), tonumber(g), tonumber(b))
+                end
+            else
+                newChangelogFrame.BackgroundColor3 = params.Color
+            end
+        end
+    
+        if params.Date then
+            local day, month, year = params.Date:match("(%d+)%s+(%a+)%s+(%d+)")
+    
+            if day and month and year then
+                local monthNames = {
+                    ["January"] = 1, ["Jan"] = 1,
+                    ["February"] = 2, ["Feb"] = 2,
+                    ["March"] = 3, ["Mar"] = 3,
+                    ["April"] = 4, ["Apr"] = 4,
+                    ["May"] = 5,
+                    ["June"] = 6, ["Jun"] = 6,
+                    ["July"] = 7, ["Jul"] = 7,
+                    ["August"] = 8, ["Aug"] = 8,
+                    ["September"] = 9, ["Sep"] = 9,
+                    ["October"] = 10, ["Oct"] = 10,
+                    ["November"] = 11, ["Nov"] = 11,
+                    ["December"] = 12, ["Dec"] = 12
+                }
+    
+                local monthNum = monthNames[month]
+    
+                if monthNum then
+                    local shortYear = year:sub(-2) 
+                    local formattedDate = string.format("%02d/%02d/%s", monthNum, tonumber(day), shortYear)
+    
+                    local daysSince = calculateDaysSince(params.Date)
+                    if daysSince then
+                        formattedDate = formattedDate .. " (" .. daysSince .. " days ago)"
+                    end
+    
+                    Converted["_DateLabel"].Text = formattedDate
+                end
+            end
+        end
+    
+        if params.LayoutOrder then
+            newChangelogFrame.LayoutOrder = params.LayoutOrder
+        end
+    
+        newChangelogFrame.Visible = true
+        newChangelogFrame.Parent = Converted["_ScrollingFrame"]
+    
+        return newChangelogFrame
+    end
+    
+    local function CreateMainUi(params)
+        Converted["_ChangelogLabel"].Text = params.Title or "Changelog"
+    
+        Converted["_ImageLabel"].Image = params.ChangelogIcon or "rbxassetid://111164450034240"
+    end
+    
+    local success, gameInfo = pcall(function()
+        return game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
+    end)
+    
+    local gameName = "Changelog"
+    if success and gameInfo then
+        gameName = gameInfo.Name .. " Changelog"
+    end
+    
+    local function ApplyGradientFromColors(frame, colors)
+        if not colors then return end
+    
+        local gradient = frame:FindFirstChildOfClass("UIGradient")
+        if not gradient then
+            gradient = Instance.new("UIGradient")
+            gradient.Parent = frame
+        end
+    
+        local colorMap = {
+            ["White"] = Color3.fromRGB(255, 255, 255),
+            ["Purple"] = Color3.fromRGB(170, 0, 255),
+            ["Red"] = Color3.fromRGB(255, 0, 4),
+            ["Green"] = Color3.fromRGB(0, 255, 0),
+            ["Blue"] = Color3.fromRGB(0, 0, 255),
+            ["Yellow"] = Color3.fromRGB(255, 255, 0),
+            ["Cyan"] = Color3.fromRGB(0, 255, 255),
+            ["Magenta"] = Color3.fromRGB(255, 0, 255),
+            ["Orange"] = Color3.fromRGB(255, 165, 0),
+            ["Pink"] = Color3.fromRGB(255, 192, 203),
+            ["Black"] = Color3.fromRGB(0, 0, 0)
+        }
+    
+        local keypoints = {}
+    
+        if colors.Start then
+            table.insert(keypoints, ColorSequenceKeypoint.new(0, 
+                typeof(colors.Start) == "string" and colorMap[colors.Start] or colors.Start))
+        end
+    
+        if colors.Middle then
+            table.insert(keypoints, ColorSequenceKeypoint.new(0.5, 
+                typeof(colors.Middle) == "string" and colorMap[colors.Middle] or colors.Middle))
+        end
+    
+        if colors.End then
+            table.insert(keypoints, ColorSequenceKeypoint.new(1, 
+                typeof(colors.End) == "string" and colorMap[colors.End] or colors.End))
+        end
+    
+        -- If no keypoints were added, use default white
+        if #keypoints == 0 then
+            keypoints = {
+                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
+            }
+            -- If only one keypoint was added, add another one to make a gradient
+        elseif #keypoints == 1 then
+            table.insert(keypoints, ColorSequenceKeypoint.new(1, keypoints[1].Value))
+        end
+    
+        gradient.Color = ColorSequence.new(keypoints)
+        return gradient
+    end
+    
+    local function CreateUpdateButtons(updates)
+    
+        for _, child in pairs(Converted["_RightButtonsScrollingFrame"]:GetChildren()) do
+            if child:IsA("ImageButton") and child.Name ~= "UpdateButtonTemplate" then
+                child:Destroy()
+            end
+        end
+    
+        local updateCount = 0
+        for updateName, updateData in pairs(updates) do
+            updateCount = updateCount + 1
+    
+            local newUpdateButton = Converted["_UpdateButtonTemplate"]:Clone()
+            newUpdateButton.Name = "UpdateButton_" .. updateName
+            newUpdateButton.Visible = true
+    
+            newUpdateButton.LayoutOrder = updateCount
+    
+            local updateLabel = Instance.new("TextLabel")
+            updateLabel.Text = updateName
+            updateLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            updateLabel.TextScaled = true
+            updateLabel.BackgroundTransparency = 1
+            updateLabel.Size = UDim2.new(1, 0, 0, 20)
+            updateLabel.Position = UDim2.new(0, 0, 1, 0)
+            updateLabel.Font = Enum.Font.FredokaOne
+            updateLabel.Parent = newUpdateButton
+    
+            local labelStroke = Instance.new("UIStroke")
+            labelStroke.Thickness = 2
+            labelStroke.Color = Color3.fromRGB(0, 0, 0)
+            labelStroke.Parent = updateLabel
+    
+            -- Apply gradient to the update button if colors are specified
+            if updateData.colors then
+                ApplyGradientFromColors(newUpdateButton, updateData.colors)
+            end
+    
+            newUpdateButton.MouseButton1Click:Connect(function()
+                for _, child in pairs(Converted["_ScrollingFrame"]:GetChildren()) do
+                    if child:IsA("Frame") and child.Name ~= "ChangelogTemplate" and child.Name ~= "UpdateLogImageFrame" then
+                        child:Destroy()
+                    end
+                end
+    
+                local visual = updateData.visual or {}
+                local metadata = updateData.metadata or {}
+                local colors = updateData.colors or {}
+    
+                local mainChangelogFrame = CreateChangelogFrame({
+                    Color = visual.backgroundColor or Color3.fromRGB(85, 255, 127),
+                    Text = updateName,
+                    ImageLabelVisible = true,
+                    ImageLabelId = metadata.buttonImageId or "rbxassetid://111164450034240",
+                    Date = metadata.releaseDate or os.date("%d %B %Y"),
+                    LayoutOrder = 1,
+                })
+    
+                -- Apply gradient if colors are specified at the update level
+                if updateData.colors then
+                    ApplyGradientFromColors(mainChangelogFrame, updateData.colors)
+                end
+    
+                for i, item in ipairs(updateData) do
+                    if type(item) == "table" and item.text then 
+                        local itemFrame = CreateChangelogFrame({
+                            Color = item.backgroundColor or visual.backgroundColor or Color3.fromRGB(255, 100, 100),
+                            Text = item.text,
+                            ImageLabelVisible = item.imageId ~= nil, 
+                            ImageLabelId = item.imageId or "rbxassetid://111164450034240",
+                            LayoutOrder = i + 1,
+                        })
+    
+                        -- Apply gradient if the item has its own colors
+                        if item.colors then
+                            ApplyGradientFromColors(itemFrame, item.colors)
+                            -- Otherwise use the update's colors if available
+                        elseif updateData.colors then
+                            ApplyGradientFromColors(itemFrame, updateData.colors)
+                        end
+                    elseif type(item) == "string" then 
+                        local itemFrame = CreateChangelogFrame({
+                            Color = visual.backgroundColor or Color3.fromRGB(255, 100, 100),
+                            Text = item,
+                            ImageLabelVisible = false, 
+                            LayoutOrder = i + 1,
+                        })
+    
+                        -- Apply update's colors if available
+                        if updateData.colors then
+                            ApplyGradientFromColors(itemFrame, updateData.colors)
+                        end
+                    end
+                end
+    
+                if metadata.releaseDate then
+                    local daysSince = calculateDaysSince(metadata.releaseDate)
+                    local dateText = metadata.releaseDate
+                    if daysSince then
+                        dateText = metadata.releaseDate .. " (" .. daysSince .. " days ago)"
+                    end
+                    Converted["_DateLabel"].Text = dateText
+                end
+    
+                if visual.updateLogVisible ~= nil then
+                    Converted["_UpdateLogImage"].Visible = visual.updateLogVisible
+                    Converted["_UpdateLogImageFrame"].Visible = visual.updateLogVisible
+    
+                    if visual.updateLogImageId and visual.updateLogVisible then
+                        Converted["_UpdateLogImage"].Image = visual.updateLogImageId
+                    end
+    
+                    if visual.layoutOrder then
+                        Converted["_UpdateLogImage"].LayoutOrder = visual.layoutOrder
+                        Converted["_UpdateLogImageFrame"].LayoutOrder = visual.layoutOrder
+                    end
+                else
+                    Converted["_UpdateLogImage"].Visible = false
+                    Converted["_UpdateLogImageFrame"].Visible = false
+                end
+            end)
+    
+            newUpdateButton.Parent = Converted["_RightButtonsScrollingFrame"]
+    
+            local function setupButtonAnimations(button)
+                local originalSize = button.Size
+                local originalPosition = button.Position
+    
+                if not button:FindFirstChild("shadow") then
+                    local shadow = Converted["_shadow"]:Clone()
+                    shadow.Parent = button
+                    shadow.Visible = false
+                end
+    
+                button.MouseEnter:Connect(function()
+                    game:GetService("TweenService"):Create(button, TweenInfo.new(0.2), {
+                        Size = UDim2.new(0, originalSize.X.Offset * 1.1, 0, originalSize.Y.Offset * 1.1),
+                        Position = UDim2.new(0, originalPosition.X.Offset - 3, 0, originalPosition.Y.Offset - 3)
+                    }):Play()
+    
+                    if button:FindFirstChild("shadow") then
+                        button.shadow.Visible = false
+                    end
+                end)
+    
+                button.MouseLeave:Connect(function()
+                    game:GetService("TweenService"):Create(button, TweenInfo.new(0.2), {
+                        Size = originalSize,
+                        Position = originalPosition
+                    }):Play()
+    
+                    if button:FindFirstChild("shadow") then
+                        button.shadow.Visible = false
+                    end
+                end)
+    
+                button.MouseButton1Down:Connect(function()
+                    game:GetService("TweenService"):Create(button, TweenInfo.new(0.1), {
+                        Size = UDim2.new(0, originalSize.X.Offset * 0.9, 0, originalSize.Y.Offset * 0.9),
+                        Position = UDim2.new(0, originalPosition.X.Offset + 3, 0, originalPosition.Y.Offset + 3)
+                    }):Play()
+                end)
+    
+                button.MouseButton1Up:Connect(function()
+                    game:GetService("TweenService"):Create(button, TweenInfo.new(0.1), {
+                        Size = UDim2.new(0, originalSize.X.Offset * 1.1, 0, originalSize.Y.Offset * 1.1),
+                        Position = UDim2.new(0, originalPosition.X.Offset - 3, 0, originalPosition.Y.Offset - 3)
+                    }):Play()
+                end)
+            end
+    
+            setupButtonAnimations(newUpdateButton)
+        end
+    
+        Converted["_UpdateButtonTemplate"].Visible = false
+    end
+    CreateUpdateButtons(UpdateModule)
+    
+    local function openCurrentVersionChangelog()
+    
+        local currentVersionButton = nil
+        for _, child in pairs(Converted["_RightButtonsScrollingFrame"]:GetChildren()) do
+            if child:IsA("ImageButton") and child.Name == "UpdateButton_" .. CurrentVersion then
+                currentVersionButton = child
+                break
+            end
+        end
+    
+        if currentVersionButton then
+    
+            for _, child in pairs(Converted["_ScrollingFrame"]:GetChildren()) do
+                if child:IsA("Frame") and child.Name ~= "ChangelogTemplate" and child.Name ~= "UpdateLogImageFrame" then
+                    child:Destroy()
+                end
+            end
+    
+            local updateData = UpdateModule[CurrentVersion]
+            if updateData then
+                local visual = updateData.visual or {}
+                local metadata = updateData.metadata or {}
+    
+                local mainChangelogFrame = CreateChangelogFrame({
+                    Color = visual.backgroundColor or Color3.fromRGB(85, 255, 127),
+                    Text = CurrentVersion,
+                    ImageLabelVisible = true,
+                    ImageLabelId = metadata.buttonImageId or "rbxassetid://111164450034240",
+                    Date = metadata.releaseDate or os.date("%d %B %Y"),
+                    LayoutOrder = 1,
+                })
+    
+                if updateData.colors then
+                    ApplyGradientFromColors(mainChangelogFrame, updateData.colors)
+                end
+    
+                for i, item in ipairs(updateData) do
+                    if type(item) == "table" and item.text then 
+                        local itemFrame = CreateChangelogFrame({
+                            Color = item.backgroundColor or visual.backgroundColor or Color3.fromRGB(255, 100, 100),
+                            Text = item.text,
+                            ImageLabelVisible = item.imageId ~= nil, 
+                            ImageLabelId = item.imageId or "rbxassetid://111164450034240",
+                            LayoutOrder = i + 1,
+                        })
+    
+                        -- Apply gradient if the item has its own colors
+                        if item.colors then
+                            ApplyGradientFromColors(itemFrame, item.colors)
+                            -- Otherwise use the update's colors if available
+                        elseif updateData.colors then
+                            ApplyGradientFromColors(itemFrame, updateData.colors)
+                        end
+                    elseif type(item) == "string" then 
+                        local itemFrame = CreateChangelogFrame({
+                            Color = visual.backgroundColor or Color3.fromRGB(255, 100, 100),
+                            Text = item,
+                            ImageLabelVisible = false, 
+                            LayoutOrder = i + 1,
+                        })
+    
+                        -- Apply update's colors if available
+                        if updateData.colors then
+                            ApplyGradientFromColors(itemFrame, updateData.colors)
+                        end
+                    end
+                end
+    
+    
+    
+                if metadata.releaseDate then
+                    local daysSince = calculateDaysSince(metadata.releaseDate)
+                    local dateText = metadata.releaseDate
+                    if daysSince then
+                        dateText = metadata.releaseDate .. " (" .. daysSince .. " days ago)"
+                    end
+                    Converted["_DateLabel"].Text = dateText
+                end
+    
+                if visual.updateLogVisible ~= nil then
+                    Converted["_UpdateLogImage"].Visible = visual.updateLogVisible
+                    Converted["_UpdateLogImageFrame"].Visible = visual.updateLogVisible
+    
+                    if visual.updateLogImageId and visual.updateLogVisible then
+                        Converted["_UpdateLogImage"].Image = visual.updateLogImageId
+                    end
+    
+                    if visual.layoutOrder then
+                        Converted["_UpdateLogImage"].LayoutOrder = visual.layoutOrder
+                        Converted["_UpdateLogImageFrame"].LayoutOrder = visual.layoutOrder
+                    end
+                else
+                    Converted["_UpdateLogImage"].Visible = false
+                    Converted["_UpdateLogImageFrame"].Visible = false
+                end
+            end
+        end
+    end
+    
+    openCurrentVersionChangelog()
+end
+
+
+return Library
