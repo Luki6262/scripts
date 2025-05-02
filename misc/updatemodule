@@ -23,24 +23,19 @@ local Colors = {
 }
 
 local Updates = {
-	["Update 3.2.1"] = {
+	["Update 1"] = {
 
 		{
-			text = "Added new weapons to the game",
-			imageId = "rbxassetid://14423621163",
-			backgroundColor = Colors["Violet"]
+			text = "Added Auto Buy Upgrades",
+		--	imageId = "rbxassetid://14423621163",
+			backgroundColor = Colors["Green"]
 		},
 		{
-			text = "Fixed bug with player movement",
-			imageId = "rbxassetid://14001321443",
-			backgroundColor = Color3.fromRGB(120, 255, 170) 
+			text = "Fixed Bugs",
+			--imageId = "rbxassetid://14001321443",
+			backgroundColor = Colors["Green"]
 		},
-		{
-			text = "Improved performance on mobile devices",
-			imageId = "rbxassetid://111164450034240",
-			backgroundColor = Color3.fromRGB(85, 255, 127) 
-		},
-		{
+	--[[	{
 			text = "New map: Volcano Island",
 			imageId = "rbxassetid://14423621349",
 			backgroundColor = Color3.fromRGB(255, 255, 255),
@@ -50,7 +45,7 @@ local Updates = {
 				Middle = "White",
 				End = "Red"
 			}
-		},
+		}, --]]
 
 		visual = {
 			backgroundColor = Color3.fromRGB(85, 255, 127), 
@@ -63,135 +58,6 @@ local Updates = {
 		},
 
 	},
-
-	["Update 3.1.0"] = {
-
-		{
-			text = "Major gameplay overhaul",
-			imageId = "rbxassetid://14423621163",
-			backgroundColor = Color3.fromRGB(100, 150, 255) 
-		},
-		{
-			text = "New character customization system",
-			imageId = "rbxassetid://14001321443",
-			backgroundColor = Color3.fromRGB(120, 170, 255) 
-		},
-		{
-			text = "Added daily rewards system",
-			imageId = "rbxassetid://111164450034240",
-			backgroundColor = Color3.fromRGB(80, 130, 235) 
-		},
-		{
-			text = "Fixed several critical bugs",
-			imageId = "rbxassetid://14423621349",
-			backgroundColor = Color3.fromRGB(140, 190, 255) 
-		},
-
-		visual = {
-			backgroundColor = Color3.fromRGB(100, 150, 255), 
-			titleColor = Color3.fromRGB(255, 255, 255),
-			borderColor = Color3.fromRGB(0, 0, 200),
-			borderThickness = 2.5
-		}
-	},
-
-	["Update 3.0.5"] = {
-
-		{
-			text = "Emergency hotfix for server crashes",
-			imageId = "rbxassetid://14423621163",
-			backgroundColor = Color3.fromRGB(255, 100, 100) 
-		},
-		{
-			text = "Fixed inventory disappearing issue",
-			imageId = "rbxassetid://14001321443",
-			backgroundColor = Color3.fromRGB(255, 120, 120) 
-		},
-		{
-			text = "Adjusted weapon balance",
-			imageId = "rbxassetid://111164450034240",
-			backgroundColor = Color3.fromRGB(255, 80, 80) 
-		},
-
-		visual = {
-			backgroundColor = Color3.fromRGB(255, 100, 100), 
-			titleColor = Color3.fromRGB(255, 255, 255),
-			borderColor = Color3.fromRGB(200, 0, 0),
-			borderThickness = 3
-		}
-	},
-
-	["Update 3.0.0"] = {
-
-		{
-			text = "Complete game redesign!",
-			imageId = "rbxassetid://14423621163",
-			backgroundColor = Color3.fromRGB(255, 215, 0) 
-		},
-		{
-			text = "New UI system",
-			imageId = "rbxassetid://14001321443",
-			backgroundColor = Color3.fromRGB(255, 225, 50) 
-		},
-		{
-			text = "Added 5 new maps",
-			imageId = "rbxassetid://111164450034240",
-			backgroundColor = Color3.fromRGB(255, 200, 0) 
-		},
-		{
-			text = "Implemented friend system",
-			imageId = "rbxassetid://14423621349",
-			backgroundColor = Color3.fromRGB(255, 230, 100) 
-		},
-		{
-			text = "New progression system with 50 levels",
-			imageId = "rbxassetid://14423621163",
-			backgroundColor = Color3.fromRGB(255, 210, 50) 
-		},
-		{
-			text = "Added premium shop",
-			backgroundColor = Color3.fromRGB(255, 220, 75) 
-		},
-
-		visual = {
-			backgroundColor = Color3.fromRGB(255, 215, 0), 
-			titleColor = Color3.fromRGB(0, 0, 0), 
-			borderColor = Color3.fromRGB(200, 170, 0),
-			borderThickness = 4,
-			glow = true 
-		}
-	},
-
-	["Update 2.5.0"] = {
-
-		{
-			text = "Added pets system",
-			imageId = "rbxassetid://14423621163",
-			backgroundColor = Color3.fromRGB(255, 165, 0) 
-		},
-		{
-			text = "New seasonal event: Summer Festival",
-			imageId = "rbxassetid://14001321443",
-			backgroundColor = Color3.fromRGB(255, 185, 20) 
-		},
-		{
-			text = "10 new character skins",
-			imageId = "rbxassetid://111164450034240",
-			backgroundColor = Color3.fromRGB(255, 145, 0) 
-		},
-		{
-			text = "Performance improvements",
-			imageId = "rbxassetid://14423621349",
-			backgroundColor = Color3.fromRGB(255, 175, 50) 
-		},
-
-		visual = {
-			backgroundColor = Color3.fromRGB(255, 165, 0), 
-			titleColor = Color3.fromRGB(255, 255, 255),
-			borderColor = Color3.fromRGB(200, 100, 0),
-			borderThickness = 2
-		}
-	}
 }
 
 local UpdateMetadata = {
