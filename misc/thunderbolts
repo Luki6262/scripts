@@ -1,79 +1,81 @@
-local Colors = {
-    ["Red"] = "Color3.fromRGB(255, 0, 0)",
-    ["Green"] = "Color3.fromRGB(0, 255, 0)",
-    ["Blue"] = "Color3.fromRGB(0, 0, 255)",
-    ["Yellow"] = "Color3.fromRGB(255, 255, 0)",
-    ["Cyan"] = "Color3.fromRGB(0, 255, 255)",
-    ["Magenta"] = "Color3.fromRGB(255, 0, 255)",
-    ["Black"] = "Color3.fromRGB(0, 0, 0)",
-    ["White"] = "Color3.fromRGB(255, 255, 255)",
-    ["Orange"] = "Color3.fromRGB(255, 165, 0)",
-    ["Purple"] = "Color3.fromRGB(128, 0, 128)",
-    ["Pink"] = "Color3.fromRGB(255, 192, 203)",
-    ["Brown"] = "Color3.fromRGB(165, 42, 42)",
-    ["Gray"] = "Color3.fromRGB(128, 128, 128)",
-    ["LightGray"] = "Color3.fromRGB(192, 192, 192)",
-    ["DarkGray"] = "Color3.fromRGB(64, 64, 64)",
-    ["Gold"] = "Color3.fromRGB(255, 215, 0)",
-    ["Silver"] = "Color3.fromRGB(192, 192, 192)",
-    ["Lime"] = "Color3.fromRGB(0, 255, 0)",
-    ["Teal"] = "Color3.fromRGB(0, 128, 128)",
-    ["Indigo"] = "Color3.fromRGB(75, 0, 130)",
-    ["Violet"] = "Color3.fromRGB(238, 130, 238)"
-}
-
-local Updates = {
-	["Update 1"] = {
-
-		{
-			text = "Added Auto Buy Upgrades",
-            imageId = "rbxassetid://0000000000",
-			backgroundColor = Colors["Green"]
+if game.PlaceId == 111989938562194 then
+	local Colors = {
+		["Red"] = "Color3.fromRGB(255, 0, 0)",
+		["Green"] = "Color3.fromRGB(0, 255, 0)",
+		["Blue"] = "Color3.fromRGB(0, 0, 255)",
+		["Yellow"] = "Color3.fromRGB(255, 255, 0)",
+		["Cyan"] = "Color3.fromRGB(0, 255, 255)",
+		["Magenta"] = "Color3.fromRGB(255, 0, 255)",
+		["Black"] = "Color3.fromRGB(0, 0, 0)",
+		["White"] = "Color3.fromRGB(255, 255, 255)",
+		["Orange"] = "Color3.fromRGB(255, 165, 0)",
+		["Purple"] = "Color3.fromRGB(128, 0, 128)",
+		["Pink"] = "Color3.fromRGB(255, 192, 203)",
+		["Brown"] = "Color3.fromRGB(165, 42, 42)",
+		["Gray"] = "Color3.fromRGB(128, 128, 128)",
+		["LightGray"] = "Color3.fromRGB(192, 192, 192)",
+		["DarkGray"] = "Color3.fromRGB(64, 64, 64)",
+		["Gold"] = "Color3.fromRGB(255, 215, 0)",
+		["Silver"] = "Color3.fromRGB(192, 192, 192)",
+		["Lime"] = "Color3.fromRGB(0, 255, 0)",
+		["Teal"] = "Color3.fromRGB(0, 128, 128)",
+		["Indigo"] = "Color3.fromRGB(75, 0, 130)",
+		["Violet"] = "Color3.fromRGB(238, 130, 238)"
+	}
+	
+	local Updates = {
+		["Update 1"] = {
+	
+			{
+				text = "Added Auto Buy Upgrades",
+				imageId = "rbxassetid://0000000000",
+				backgroundColor = Colors["Green"]
+			},
+			{
+				text = "Fixed Bugs",
+				imageId = "rbxassetid://0000000000",
+				backgroundColor = Colors["Green"]
+			},
+		--[[	{
+				text = "New map: Volcano Island",
+				imageId = "rbxassetid://14423621349",
+				backgroundColor = Color3.fromRGB(255, 255, 255),
+				
+				colors = {
+					Start = "Red",
+					Middle = "White",
+					End = "Red"
+				}
+			}, --]]
+	
+			visual = {
+				backgroundColor = Color3.fromRGB(85, 255, 127), 
+				titleColor = Color3.fromRGB(255, 255, 255), 
+				borderColor = Color3.fromRGB(0, 200, 0), 
+				borderThickness = 3,
+				updateLogVisible = false,
+				layoutOrder = 999,
+				--updateLogImageId = "rbxassetid://111164450034240",
+				updateLogDate = "19 July 2027"
+			},
+	
 		},
-		{
-			text = "Fixed Bugs",
-            imageId = "rbxassetid://0000000000",
-			backgroundColor = Colors["Green"]
+	}
+	
+	local UpdateMetadata = {
+		["Update 3.2.1"] = {
+			releaseDate = "15 August 2023",
+			isHotfix = false,
+			developerNotes = "This update focuses on adding new content while fixing critical issues.",
+			buttonImageId = "rbxassetid://14423621163" 
 		},
-	--[[	{
-			text = "New map: Volcano Island",
-			imageId = "rbxassetid://14423621349",
-			backgroundColor = Color3.fromRGB(255, 255, 255),
-			
-			colors = {
-				Start = "Red",
-				Middle = "White",
-				End = "Red"
-			}
-		}, --]]
-
-		visual = {
-			backgroundColor = Color3.fromRGB(85, 255, 127), 
-			titleColor = Color3.fromRGB(255, 255, 255), 
-			borderColor = Color3.fromRGB(0, 200, 0), 
-			borderThickness = 3,
-			updateLogVisible = false,
-			layoutOrder = 999,
-			--updateLogImageId = "rbxassetid://111164450034240",
-			updateLogDate = "19 July 2027"
-		},
-
-	},
-}
-
-local UpdateMetadata = {
-	["Update 3.2.1"] = {
-		releaseDate = "15 August 2023",
-		isHotfix = false,
-		developerNotes = "This update focuses on adding new content while fixing critical issues.",
-		buttonImageId = "rbxassetid://14423621163" 
-	},
-}
-
-for updateName, metadata in pairs(UpdateMetadata) do
-	if Updates[updateName] then
-		Updates[updateName].metadata = metadata
+	}
+	
+	for updateName, metadata in pairs(UpdateMetadata) do
+		if Updates[updateName] then
+			Updates[updateName].metadata = metadata
+		end
 	end
+	
+	return Updates
 end
-
-return Updates
