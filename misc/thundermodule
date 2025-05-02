@@ -54,7 +54,8 @@ local Updates = {
 			borderThickness = 3,
 			updateLogVisible = true,
 			layoutOrder = 999,
-			updateLogImageId = "rbxassetid://111164450034240"
+			updateLogImageId = "rbxassetid://111164450034240",
+			updateLogDate = "19 July 2027"
 		},
 
 	},
