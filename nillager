@@ -1,0 +1,417 @@
+getgenv().SendNotifications = true
+
+local httpService = game:GetService('HttpService')
+local AnimManager = {} do
+	AnimManager.Folder = 'LinoriaLibSettings'
+	AnimManager.Library = nil
+	function AnimManager:ApplyTheme(theme)
+		local customThemeData = self:GetCustomTheme(theme)
+		local data = customThemeData or self.BuiltInThemes[theme]
+
+		if not data then return end
+
+		-- custom themes are just regular dictionaries instead of an array with { index, dictionary }
+
+		local scheme = data[2]
+		for idx, col in next, customThemeData or scheme do
+			self.Library[idx] = Color3.fromHex(col)
+			
+			if Options[idx] then
+				Options[idx]:SetValueRGB(Color3.fromHex(col))
+			end
+		end
+
+		self:ThemeUpdate()
+	end
+
+	function AnimManager:LoadDefault()		
+		local theme = 'Default'
+		local content = isfile(self.Folder .. '/Animations/default.txt') and readfile(self.Folder .. '/Animations/default.txt')
+
+		local isDefault = true
+		if content then
+			if self.BuiltInThemes[content] then
+				theme = content
+			elseif self:GetCustomTheme(content) then
+				theme = content
+				isDefault = false;
+			end
+		elseif self.BuiltInThemes[self.DefaultTheme] then
+		 	theme = self.DefaultTheme
+		end
+
+		if isDefault then
+			Options.AnimManager_ThemeList:SetValue(theme)
+		else
+			self:ApplyTheme(theme)
+		end
+	end
+
+	function AnimManager:SaveDefault(theme)
+		writefile(self.Folder .. '/Animations/default.txt', theme)
+	end
+
+    function AnimManager:CreateAnimManager(groupbox)
+        groupbox:AddLabel('Animation Manager')
+        groupbox:AddDivider()
+        
+        -- Add UI Notifications toggle
+        groupbox:AddToggle('AnimManager_UINotifications', {
+            Text = 'Send UI Notifications',
+            Default = getgenv().SendNotifications,
+            Tooltip = 'Enable or disable UI notifications',
+			Callback = function(nig)
+				getgenv().SendNotifications = nig
+			end
+        })
+        
+        -- Create a helper function to send notifications only if enabled
+        function self:SendNotification(message, duration)
+            if getgenv().SendNotifications then
+                self.Library:Notify(message, duration or 3)
+            end
+        end
+        
+        groupbox:AddInput('AnimManager_AnimationID', { Text = 'Animation ID' })
+        groupbox:AddInput('AnimManager_AnimationName', { Text = 'Animation Name' })
+        
+        -- Add animation speed slider
+        groupbox:AddSlider('AnimManager_AnimationSpeed', {
+            Text = 'Animation Speed',
+            Default = 1,
+            Min = 0.1,
+            Max = 5,
+            Rounding = 1,
+            Suffix = 'x',
+            Increment = 0.1 -- Add this to ensure proper decimal increments
+        })
+        
+        -- Function to load saved animations
+        function self:LoadSavedAnimations()
+            local path = self.Folder .. '/animations.json'
+            if not isfile(path) then
+                return {}
+            end
+            
+            local data = readfile(path)
+            local success, decoded = pcall(httpService.JSONDecode, httpService, data)
+            
+            if not success then
+                self:SendNotification('Failed to load animations', 3)
+                return {}
+            end
+            
+            return decoded
+        end
+        
+        -- Function to save animations with speed
+        function self:SaveAnimation(name, id, speed)
+            local animations = self:LoadSavedAnimations()
+            animations[name] = {
+                id = id,
+                speed = speed or 1
+            }
+            
+            writefile(self.Folder .. '/animations.json', httpService:JSONEncode(animations))
+            return animations
+        end
+        
+        -- Get animation names for dropdown
+        function self:GetAnimationNames()
+            local animations = self:LoadSavedAnimations()
+            local names = {}
+            
+            for name, _ in pairs(animations) do
+                table.insert(names, name)
+            end
+            
+            table.sort(names)
+            return names
+        end
+        
+        -- Create dropdown with saved animations
+        local animNames = self:GetAnimationNames()
+        groupbox:AddDropdown('AnimManager_AnimationList', { 
+            Text = 'Saved Animations', 
+            Values = animNames, 
+            AllowNull = true 
+        })
+        
+        Options.AnimManager_AnimationList:OnChanged(function()
+            local selectedAnim = Options.AnimManager_AnimationList.Value
+            if selectedAnim then
+                local animations = self:LoadSavedAnimations()
+                local animData = animations[selectedAnim]
+                if animData then
+                    -- Handle both old format (just ID) and new format (table with id and speed)
+                    if type(animData) == "string" then
+                        -- Check if the animation ID contains non-numeric characters
+                        if animData:match("rbxassetid://") or animData:match("[^0-9]") then
+                           -- self:SendNotification("Please enter only numbers for the animation ID", 3)
+                            Options.AnimManager_AnimationID:SetValue(animData:gsub("rbxassetid://", ""):gsub("[^0-9]", ""))
+                        else
+                            Options.AnimManager_AnimationID:SetValue(animData)
+                        end
+                        Options.AnimManager_AnimationSpeed:SetValue(1)
+                    else
+                        -- Check if the animation ID contains non-numeric characters
+                        if animData.id:match("rbxassetid://") or animData.id:match("[^0-9]") then
+                      --      self:SendNotification("Please enter only numbers for the animation ID", 3)
+                            Options.AnimManager_AnimationID:SetValue(animData.id:gsub("rbxassetid://", ""):gsub("[^0-9]", ""))
+                        else
+                            Options.AnimManager_AnimationID:SetValue(animData.id)
+                        end
+                        Options.AnimManager_AnimationSpeed:SetValue(animData.speed or 1)
+                    end
+                    Options.AnimManager_AnimationName:SetValue(selectedAnim)
+                end
+            end
+        end)
+        
+        groupbox:AddButton('Save Animation', function()
+            local animName = Options.AnimManager_AnimationName.Value
+            local animID = Options.AnimManager_AnimationID.Value
+            local animSpeed = Options.AnimManager_AnimationSpeed.Value
+            
+            if animName:gsub(' ', '') == '' then
+                self:SendNotification('Please enter an animation name', 3)
+                return
+            end
+            
+            if animID:gsub(' ', '') == '' then
+                self:SendNotification('Please enter an animation ID', 3)
+                return
+            end
+            
+            local animations = self:SaveAnimation(animName, animID, animSpeed)
+            
+            -- Update dropdown
+            local names = {}
+            for name, _ in pairs(animations) do
+                table.insert(names, name)
+            end
+            table.sort(names)
+            
+            Options.AnimManager_AnimationList:SetValues(names)
+            Options.AnimManager_AnimationList:SetValue(animName)
+            
+            self:SendNotification(string.format('Animation "%s" saved', animName), 3)
+        end)
+        
+        -- Delete animation button
+        groupbox:AddButton('Delete Animation', function()
+            local selectedAnim = Options.AnimManager_AnimationList.Value
+            
+            if not selectedAnim or selectedAnim:gsub(' ', '') == '' then
+                self:SendNotification('Please select an animation to delete', 3)
+                return
+            end
+            
+            -- Load current animations
+            local animations = self:LoadSavedAnimations()
+            
+            -- Check if the animation exists
+            if not animations[selectedAnim] then
+                self:SendNotification(string.format('Animation "%s" not found', selectedAnim), 3)
+                return
+            end
+            
+            -- Remove the animation
+            animations[selectedAnim] = nil
+            
+            -- Save the updated animations
+            writefile(self.Folder .. '/animations.json', httpService:JSONEncode(animations))
+            
+            -- Update dropdown
+            local names = {}
+            for name, _ in pairs(animations) do
+                table.insert(names, name)
+            end
+            table.sort(names)
+            
+            Options.AnimManager_AnimationList:SetValues(names)
+            Options.AnimManager_AnimationList:SetValue(nil)
+            
+            -- Clear input fields
+            Options.AnimManager_AnimationName:SetValue('')
+            Options.AnimManager_AnimationID:SetValue('')
+            Options.AnimManager_AnimationSpeed:SetValue(1)
+            
+            self:SendNotification(string.format('Animation "%s" deleted', selectedAnim), 3)
+        end)
+        
+        groupbox:AddButton('Play Animation', function()
+            local animationID = Options.AnimManager_AnimationID.Value
+            local animationSpeed = Options.AnimManager_AnimationSpeed.Value
+            
+            if animationID:gsub(' ', '') == '' then
+                self:SendNotification('Please enter an animation ID', 3)
+                return
+            end
+            
+            local cleanAnimationID = animationID:gsub("rbxassetid://", "")
+            
+            local player = game.Players.LocalPlayer
+            if not player.Character then
+                self:SendNotification('Character not found', 3)
+                return
+            end
+            
+            local humanoid = player.Character:FindFirstChild("Humanoid")
+            if not humanoid then
+                self:SendNotification('Humanoid not found', 3)
+                return
+            end
+            
+            -- Check if character is R6 or R15
+            local rigType = humanoid.RigType.Name
+           -- self:SendNotification(string.format('Detected rig type: %s', rigType), 3)
+            
+            local animator = humanoid:FindFirstChildOfClass("Animator")
+            if not animator then
+                animator = Instance.new("Animator", humanoid)
+            end
+            
+            local animation = Instance.new("Animation")
+            animation.AnimationId = "rbxassetid://" .. cleanAnimationID
+            
+            local success, errorMsg = pcall(function()
+                local animTrack = animator:LoadAnimation(animation)
+                
+                -- Make sure speed is a number and properly formatted
+                local speed = tonumber(animationSpeed)
+                if not speed then speed = 1 end
+                
+                -- Apply speed after playing to ensure it takes effect
+                animTrack:Play()
+                task.wait(0.1) -- Small delay to ensure animation starts
+                animTrack:AdjustSpeed(speed)
+                
+                print("Playing animation with speed: " .. tostring(speed))
+                
+                self:SendNotification(string.format('Playing animation ID: %s (Speed: %.1fx) on %s rig', 
+                    cleanAnimationID, speed, rigType), 3)
+            end)
+            
+            if not success then
+                self:SendNotification(string.format('Failed to play animation: %s', errorMsg), 3)
+                
+                -- If animation failed, it might be incompatible with the rig type
+                if rigType == "R6" then
+                  --  self:SendNotification('This might be an R15 animation. R6 characters can only play R6 animations.', 3)
+                elseif rigType == "R15" then
+                    self:SendNotification('This might be an R6 animation. Try another animation ID.', 3)
+                end
+            end
+        end)
+    end
+
+	function AnimManager:GetCustomTheme(file)
+		local path = self.Folder .. '/Animations/' .. file
+		if not isfile(path) then
+			return nil
+		end
+
+		local data = readfile(path)
+		local success, decoded = pcall(httpService.JSONDecode, httpService, data)
+		
+		if not success then
+			return nil
+		end
+
+		return decoded
+	end
+
+	function AnimManager:SaveCustomTheme(file)
+		if file:gsub(' ', '') == '' then
+			return self.Library:Notify('Invalid file name for theme (empty)', 3)
+		end
+
+		local theme = {}
+		local fields = { "FontColor", "MainColor", "AccentColor", "BackgroundColor", "OutlineColor" }
+
+		for _, field in next, fields do
+			theme[field] = Options[field].Value:ToHex()
+		end
+
+		writefile(self.Folder .. '/Animations/' .. file .. '.json', httpService:JSONEncode(theme))
+	end
+
+	function AnimManager:ReloadCustomThemes()
+		local list = listfiles(self.Folder .. '/Animations')
+
+		local out = {}
+		for i = 1, #list do
+			local file = list[i]
+			if file:sub(-5) == '.json' then
+				-- i hate this but it has to be done ...
+
+				local pos = file:find('.json', 1, true)
+				local char = file:sub(pos, pos)
+
+				while char ~= '/' and char ~= '\\' and char ~= '' do
+					pos = pos - 1
+					char = file:sub(pos, pos)
+				end
+
+				if char == '/' or char == '\\' then
+					table.insert(out, file:sub(pos + 1))
+				end
+			end
+		end
+
+		return out
+	end
+
+	function AnimManager:SetLibrary(lib)
+		self.Library = lib
+	end
+
+	function AnimManager:BuildFolderTree()
+		local paths = {}
+
+		-- build the entire tree if a path is like some-hub/phantom-forces
+		-- makefolder builds the entire tree on Synapse X but not other exploits
+
+		local parts = self.Folder:split('/')
+		for idx = 1, #parts do
+			paths[#paths + 1] = table.concat(parts, '/', 1, idx)
+		end
+
+		table.insert(paths, self.Folder .. '/Animations')
+		table.insert(paths, self.Folder .. '/settings')
+
+		for i = 1, #paths do
+			local str = paths[i]
+			if not isfolder(str) then
+				makefolder(str)
+			end
+		end
+	end
+
+	function AnimManager:SetFolder(folder)
+		self.Folder = folder
+		self:BuildFolderTree()
+	end
+
+	function AnimManager:CreateGroupBox(tab)
+		assert(self.Library, 'Must set AnimManager.Library first!')
+		return tab:AddLeftGroupbox('Animations')
+	end
+
+	function AnimManager:ApplyToTab(tab)
+		assert(self.Library, 'Must set AnimManager.Library first!')
+		local groupbox = self:CreateGroupBox(tab)
+		self:CreateAnimManager(groupbox)
+	end
+
+	function AnimManager:ApplyToGroupbox(groupbox)
+		assert(self.Library, 'Must set AnimManager.Library first!')
+		self:CreateAnimManager(groupbox)
+	end
+
+	AnimManager:BuildFolderTree()
+end
+
+
+return AnimManager
