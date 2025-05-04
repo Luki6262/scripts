@@ -1,3 +1,4 @@
+-- MODDED BY WH
 local InputService = game:GetService('UserInputService');
 local TextService = game:GetService('TextService');
 local CoreGui = game:GetService('CoreGui');
@@ -2360,18 +2361,34 @@ do
 		Scrolling.Size = UDim2.new(1, 0, 1, -22);
 
 		-- Function to filter dropdown items based on search input
-		local function FilterItems()
-			local searchText = SearchBox.Text:lower()
-			for _, item in ipairs(Scrolling:GetChildren()) do
-				if item:IsA('Frame') then
-					local label = item:FindFirstChildOfClass('TextLabel')
-					if label then
-						item.Visible = label.Text:lower():find(searchText) ~= nil
-					end
-				end
-			end
-		end
-		SearchBox:GetPropertyChangedSignal('Text'):Connect(FilterItems)
+        local function FilterItems()
+            local searchText = SearchBox.Text:lower()
+            for _, item in ipairs(Scrolling:GetChildren()) do
+                if item:IsA('Frame') then
+                    local label = item:FindFirstChildOfClass('TextLabel')
+                    if label then
+                        item.Visible = label.Text:lower():find(searchText) ~= nil
+                    end
+                end
+            end
+        end
+
+        local function UpdateSearchBoxVisibility()
+            local itemCount = 0
+            for _, item in ipairs(Scrolling:GetChildren()) do
+                if item:IsA('Frame') then
+                    itemCount = itemCount + 1
+                end
+            end
+            SearchBox.Visible = itemCount > 1
+            if SearchBox.Visible then
+                Scrolling.Position = UDim2.new(0, 0, 0, 22)
+                Scrolling.Size = UDim2.new(1, 0, 1, -22)
+            else
+                Scrolling.Position = UDim2.new(0, 0, 0, 0)
+                Scrolling.Size = UDim2.new(1, 0, 1, 0)
+            end
+        end
 
         Library:AddToRegistry(ListInner, {
             BackgroundColor3 = 'MainColor';
@@ -2538,7 +2555,11 @@ do
 
             local Y = math.clamp(Count * 20, 0, MAX_DROPDOWN_ITEMS * 20) + 1;
             RecalculateListSize(Y);
+
+            UpdateSearchBoxVisibility()
         end;
+
+        SearchBox:GetPropertyChangedSignal('Text'):Connect(FilterItems)
 
         function Dropdown:SetValues(NewValues)
             if NewValues then
