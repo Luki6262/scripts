@@ -1,4 +1,4 @@
--- MODDED BY WH
+-- MODDED BY WH / 2025
 local InputService = game:GetService('UserInputService');
 local TextService = game:GetService('TextService');
 local CoreGui = game:GetService('CoreGui');
@@ -395,6 +395,59 @@ function Library:UpdateColorsUsingRegistry()
         end;
     end;
 end;
+
+function Library:SetSize(Scale)
+	assert(type(Scale) == "number" and Scale > 0, "Scale must be a positive number")
+
+	print("SetSize function called with scale:", Scale) 
+
+	local Frames = self.ScreenGui:GetChildren()
+	local FramesToResize = {}
+
+	for _, frame in ipairs(Frames) do
+		if frame:IsA("Frame") then
+			table.insert(FramesToResize, frame)
+		end
+	end
+
+	if #FramesToResize == 0 then
+		return
+	end
+
+
+	if not self.OriginalSizes then
+		self.OriginalSizes = {}
+		for i, frame in ipairs(FramesToResize) do
+			self.OriginalSizes[i] = frame.Size
+		end
+	end
+
+	for i, frame in ipairs(FramesToResize) do
+		local originalSize = self.OriginalSizes[i]
+		local newSize = UDim2.new(
+			originalSize.X.Scale * Scale,
+			originalSize.X.Offset * Scale,
+			originalSize.Y.Scale * Scale,
+			originalSize.Y.Offset * Scale
+		)
+
+		frame.Size = newSize
+	end
+
+	if self.UpdateDependencyBoxes then
+		self:UpdateDependencyBoxes()
+	end
+
+	if self.ScreenGui then
+		self.ScreenGui.Parent = nil
+		if game:GetService("RunService"):IsStudio() then
+			ScreenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		else
+			self.ScreenGui.Parent = game:GetService("CoreGui")
+		end
+	end
+
+end
 
 function Library:GiveSignal(Signal)
     -- Only used for signals not attached to library instances, as those should be cleaned up on object destruction by Roblox
